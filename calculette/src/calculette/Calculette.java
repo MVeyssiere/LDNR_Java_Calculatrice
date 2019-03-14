@@ -36,13 +36,16 @@ public class Calculette {
         frame.setSize(240, 280);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         JPanel content = new JPanel();
-        JTextField field = new JTextField("0");
-        field.setHorizontalAlignment(JTextField.RIGHT);
-        content.add(field, BorderLayout.NORTH);
+        content.setLayout(new BorderLayout());
 
-         JPanel chiffres = new JPanel();
+        JLabel affichage = new JLabel("0");
+        affichage.setHorizontalAlignment(JLabel.RIGHT);
+        JPanel ecran = new JPanel();
+        ecran.add(affichage);
+
+
+        JPanel chiffres = new JPanel();
         chiffres.setLayout(new GridLayout(0, 3));
         JButton egal = new JButton("=");
         JButton point = new JButton(".");
@@ -83,9 +86,6 @@ public class Calculette {
 
         JPanel operations = new JPanel();
         operations.setLayout(new GridLayout(0, 2));
-
-        content.add(operations, BorderLayout.EAST);
-
         JButton ce = new JButton("CE");
         JButton c = new JButton("C");
         JButton multiplication = new JButton("x");
@@ -106,9 +106,11 @@ public class Calculette {
         operations.add(multiplication);
         operations.add(division);
 
-        content.add(chiffres, BorderLayout.WEST);
-
+        content.add(ecran, BorderLayout.NORTH);
+        content.add(chiffres, BorderLayout.CENTER);
+        content.add(operations, BorderLayout.EAST);
         frame.add(content);
+
         frame.setVisible(true);
     }
 
